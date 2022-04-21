@@ -1,4 +1,5 @@
 using MedicationsAPI.Data;
+using MedicationsAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MedicationsContext>(options =>
     options.UseNpgsql(builder.Configuration["Medications:ConnectionString"])
 );
+
+//Services
+builder.Services.AddScoped<IMedicationService, MedicationService>();
 
 var app = builder.Build();
 

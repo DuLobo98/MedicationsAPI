@@ -10,10 +10,10 @@ namespace MedicationsAPI.Models
         public string Name { get; set; }
 
         [Required]
-        [Range(1,double.MaxValue)]
+        [Range(1, int.MaxValue, ErrorMessage = "The quantity should be greater than 0")]
         public int Quantity { get; set; }
 
-        public DateTime CreationDate { get; set; } = DateTime.Now;
+        public DateTime CreationDate { get; set; } = DateTime.UtcNow;
 
         public Medication(string name, int quantity)
         {
