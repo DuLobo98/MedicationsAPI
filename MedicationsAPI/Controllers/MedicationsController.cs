@@ -16,14 +16,14 @@ namespace MedicationsAPI.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<List<Medication>>> GetAllMedications()
+        public async Task<IActionResult> GetAllMedicationsAsync()
         {
             var medications = await _medicationService.GetAllAsync();
             return Ok(medications);
         }
 
         [HttpPost()]
-        public async Task<ActionResult<Medication>> CreateMedication(Medication medication)
+        public async Task<IActionResult> CreateMedicationAsync(Medication medication)
         {
             await _medicationService.CreateAsync(medication);
 
@@ -35,7 +35,7 @@ namespace MedicationsAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteMedication(Guid id)
+        public async Task<IActionResult> DeleteMedicationAsync(Guid id)
         {
             var deleted = await _medicationService.DeleteAsync(id);
             if (deleted)
